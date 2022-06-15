@@ -22,17 +22,17 @@ export default function Users() {
           </TableRow>
         </TableHead>
         <TableBody>
-            {
-              users && users.map(u=>{
-                return (
-                <TableRow key={u.id}>
-                  <TableCell>{u.id}</TableCell>
-                  <TableCell>{u.userFirstName}</TableCell>
-                  <TableCell>{u.userLastName}</TableCell>
-                  <TableCell>{u.userAge}</TableCell>
-                </TableRow>)
-              })
-            }
+        {
+          users && users.map(u=>{
+            return (
+            <TableRow key={u.id}>
+              <TableCell>{u.id}</TableCell>
+              <TableCell>{u.userFirstName}</TableCell>
+              <TableCell>{u.userLastName}</TableCell>
+              <TableCell>{u.userAge}</TableCell>
+            </TableRow>)
+          })
+        }
           
         </TableBody>
       </Table>

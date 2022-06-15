@@ -1,7 +1,16 @@
 import React from 'react'
 import useStore from '../zustand-reducer/store'
 import {useForm} from "react-hook-form"
+import styled from 'styled-components';
 
+
+const StyledFormContainer = styled.form`
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  
+  
+`
 export default function UserCreationForm() {
   // const inputRef = useRef()
   
@@ -17,11 +26,11 @@ export default function UserCreationForm() {
 
     
   return (
-    <form onSubmit={handleSubmit(submiting)}>
-        <input {...register("userFirstName", {required: true, minLength: 3, maxLength:20})} />
-        <input {...register("userLastName", {required: true, minLength: 3, maxLength:20})} />
-        <input type="number" {...register("userAge", {required: true, min: 18})} />
+    <StyledFormContainer onSubmit={handleSubmit(submiting)}>
+        <input {...register("userFirstName", {required: true, minLength: 3, maxLength:20})} placeholder="First Name"/>
+        <input {...register("userLastName", {required: true, minLength: 3, maxLength:20})} placeholder="Last Name"/>
+        <input type="number" {...register("userAge", {required: true, min: 18})} placeholder="Age" />
         <input type="submit"/>
-    </form>
+    </StyledFormContainer>
   )
 }
