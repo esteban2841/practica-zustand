@@ -30,7 +30,7 @@ export default function UserCreationForm() {
         <input {...register("userFirstName", {required: true, minLength: 3, maxLength:20})} placeholder="First Name"/>
         <input {...register("userLastName", {required: true, minLength: 3, maxLength:20})} placeholder="Last Name"/>
         <input type="number" {...register("userAge", {required: true, min: 18})} placeholder="Age" />
-        <input type="submit"/>
+        <input data-set-id="submiting" type="submit"/>
     </StyledFormContainer>
   )
 }
