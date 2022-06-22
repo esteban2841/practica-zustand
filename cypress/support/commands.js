@@ -1,25 +1,19 @@
-// ***********************************************
-// This example commands.js shows you how to
-// create various custom commands and overwrite
-// existing commands.
-//
-// For more comprehensive examples of custom
-// commands please read more here:
-// https://on.cypress.io/custom-commands
-// ***********************************************
-//
-//
+import {db} from "../../src/DbDexie/dataBase"
 // -- This is a parent command --
 // Cypress.Commands.add('login', (email, password) => { ... })
 //
 //
-// -- This is a child command --
-// Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })
-//
-//
-// -- This is a dual command --
-// Cypress.Commands.add('dismiss', { prevSubject: 'optional'}, (subject, options) => { ... })
-//
-//
-// -- This will overwrite an existing command --
-// Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+export default async function deletingDb(){
+    await db.users.delete()
+}
+Cypress.Commands.add("userCreation", (firstName, lastName, email, nickname, password, age )=>{
+    cy.visit("http://localhost:3000/")
+    cy.get('[data-be="userCreationForm"] input:first').type(firstName)
+    cy.get('[data-be="userCreationForm"] input').eq(1).type(lastName)
+    cy.get('[data-be="userCreationForm"] input').eq(2).type(email)
+    cy.get('[data-be="userCreationForm"] input').eq(3).type(nickname)
+    cy.get('[data-be="userCreationForm"] input').eq(4).type(password)
+    cy.get('[data-be="userCreationForm"] input').eq(5).type(age)
+    cy.get('[data-set-id="submiting"]').click()
+    
+})
