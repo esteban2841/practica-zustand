@@ -27,7 +27,12 @@ const useStore = create((set)=>({
                 
             }
         ]})
-    )
+    ),
+    deleteUser: ( userId )=> set((state)=> {
+       const newUsers = [...state.users].filter(u => u.id !== userId)
+       console.log(newUsers, "objeto en store")
+       return { users : newUsers}
+    })
 
 
 

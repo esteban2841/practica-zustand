@@ -7,11 +7,15 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-
+import DeleteIcon from '@mui/icons-material/Delete';
 
 export default function Users() {
     const users = useStore(state=>state.users)
+    const deleteUser = useStore(state=> state.deleteUser)
 
+    const handleDelete = (userId)=>{
+      deleteUser(userId)
+    }
   return (
     <TableContainer component={Paper}>
       <Table aria-label="simple table">
@@ -21,6 +25,7 @@ export default function Users() {
             <TableCell>First Name</TableCell>
             <TableCell>Last Name</TableCell>
             <TableCell>Age</TableCell>
+            <TableCell>Delete</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -32,6 +37,7 @@ export default function Users() {
               <TableCell>{u.userFirstName}</TableCell>
               <TableCell>{u.userLastName}</TableCell>
               <TableCell>{u.userAge}</TableCell>
+              <TableCell ><DeleteIcon onClick={()=>handleDelete(u.id)}/></TableCell>
             </TableRow>)
           })
         }

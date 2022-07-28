@@ -16,6 +16,16 @@ const StyledFormContainer = styled.form`
   border-radius: 10px;
   background-color: ${ props =>  props.formColor || "#32323f"};
   padding: 20px;
+  animation: movementBelow 2s linear 1;
+  @keyframes movementBelow {
+    from{
+      transform: translateX(-100%);
+      opacity: 0;
+    }to{
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
   p{
     font-size: small;
   }
@@ -49,7 +59,7 @@ export default function UserCreationForm(props) {
     // const {userFirstName, userLastName, userAge} = data
     event.preventDefault()
     await db.users.add(data)
-
+    
     addUser(data)
   } 
 

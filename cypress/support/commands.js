@@ -4,7 +4,8 @@ import {db} from "../../src/DbDexie/dataBase"
 //
 //
 export default async function deletingDb(){
-    await db.users.delete()
+    console.log(db)
+    await db.users.clear()
 }
 Cypress.Commands.add("userCreation", (firstName, lastName, email, nickname, password, age )=>{
     cy.visit("http://localhost:3000/")

@@ -18,15 +18,17 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-
         <h1>Users creation Form</h1>
         <UserCreationForm  formColor={"#32323f"} />
+        
         <h1>Users Table</h1>
         <Users/>
-        <h1>Imer</h1>
-        <ImplementingImmer/>
+
         <h1>Dexie Data</h1>
         <DexieTable/>
+        
+        <h1>Imer</h1>
+        <ImplementingImmer/>
       </header>
     </div>
   );

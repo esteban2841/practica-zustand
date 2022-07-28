@@ -6,16 +6,18 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 import {db} from "../DbDexie/dataBase"
 import {useLiveQuery} from "dexie-react-hooks"
 
 export default function DexieTable() {
-
-
-    const allItemsInDb = useLiveQuery(()=>db.users.toArray(), [])
-
-
+    
+  const allItemsInDb = useLiveQuery(()=>db.users.toArray(), [])
+    
+    const handleDelete = async (userId)=>{
+      await db.users.delete(userId)
+    }
 
   return (
     <TableContainer component={Paper}>
@@ -26,6 +28,7 @@ export default function DexieTable() {
           <TableCell>First Name</TableCell>
           <TableCell>Last Name</TableCell>
           <TableCell>Age</TableCell>
+          <TableCell>Delete</TableCell>
         </TableRow>
       </TableHead>
       <TableBody data-be="dexieTableRender">
@@ -37,6 +40,7 @@ export default function DexieTable() {
             <TableCell>{u.userFirstName}</TableCell>
             <TableCell>{u.userLastName}</TableCell>
             <TableCell>{u.userAge}</TableCell>
+            <TableCell ><DeleteIcon onClick={()=>handleDelete(u.id)}/></TableCell>
           </TableRow>)
         })
       }

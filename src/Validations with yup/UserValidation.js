@@ -6,5 +6,5 @@ export const usersSchema = (yup.object().shape({
     userEmail:yup.string().email().required(),
     userNickName:yup.string().required(), 
     userPassword:yup.string().min(4).max(16).required(), 
-    userAge: yup.number().required()
+    userAge: yup.number().required().min(18)
 }))

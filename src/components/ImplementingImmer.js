@@ -7,10 +7,12 @@ export default function ImplementingImmer() {
     const users = useStore((state)=> state.users)
     
     const usersNextState = produce( users, draft =>{
-        draft[1].userLastName = "puentes"
+      if(users.length >= 1){
+
+        draft[0].userLastName = "puentes"
+      }
 
     })
-    console.log(users, usersNextState)
   return (
     <div>
         {
